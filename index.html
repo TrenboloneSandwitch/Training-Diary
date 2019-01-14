@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap CSS file -->
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <!-- BootsWatch CSS file-->
+  <!-- Font Awesome-->
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet">
+
+  <!-- Main CSS file -->
+  <link rel="stylesheet" href="src/css/scss/main.css">
+  <title>My JavaScript App</title>
+</head>
+
+<body class="bg-black">
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">TrainingDiary</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto justify-content-center d-flex flex-fill">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Trénink</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Přehled</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Motivational -->
+
+  <div class="container-fluid">
+    <blockquote class="blockquote text-center mb-0">
+
+      <p class="mb-0">the worst thing i can be is the same as everybody else <span class="quote-highlight">i hate
+          that!</span></p>
+      <footer class="blockquote-footer">arnold schwarzenegger</footer>
+    </blockquote>
+  </div>
+
+
+  <!-- Date Chooser -->
+
+  <div class="container card card-body text-light custom-card bg-dark">
+    <ul class="list-inline justify-content-center d-flex date-menu-list m-0">
+      <li class="list-inline-item date-menu-list-item mx-auto"><a class="calendar-link text-yellow" href="#"><i class="fa fa-long-arrow-left"
+            aria-hidden="true"></i> <span class="d-none d-sm-inline">Předchozí</span></a></li>
+      <li class="list-inline-item mx-auto date-menu-list-item"><a class="calendar-link" href="#"><i class="fa fa-calendar"
+            aria-hidden="true"></i> 12.1.2019</a></li>
+      <li class="list-inline-item date-menu-list-item mx-auto"><a class="calendar-link" href="#"><span class="d-none d-sm-inline">Další</span>
+          <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+    </ul>
+  </div>
+
+  <div class="container pt-2">
+    <div class="row card">
+      <div class="card-header col-12">
+        <div class="row align-items-center">
+          <div class="col-6 text-dark px-5 phase-title">Rozcvička</div>
+          <div class="col-6 text-dark px-5 text-right phase-title">
+            <a class="text-success" href="#"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="card-body col-12">
+        <div class="row text-dark text-center align-items-center">
+          <div class="col-3">
+            Benchpress
+            <br>
+            <a class="edit text-warning mr-2" href="#" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" title="Upravit záznam"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+            <a class="edit text-danger" href="#" data-toggle="tooltip" data-placement="bottom" title="Smazat záznam" data-trigger="hover"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-9 tables">
+            <table>
+              <tbody>
+                <tr>
+                  <th>1x3</th>
+                </tr>
+                <tr>
+                  <th>100</th>
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <tbody>
+                <tr>
+                  <th>1x8</th>
+                </tr>
+                <tr>
+                  <th>120</th>
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <tbody>
+                <tr>
+                  <th>8x3</th>
+                </tr>
+                <tr>
+                  <th>130</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"></script>
+    <script src="src/js/bootstrap.min.js"></script>
+    <!--Main JS file compiled from all files-->
+    <script src="src/app.js"></script>
+</body>
+
+</html>

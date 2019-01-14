@@ -1,0 +1,60 @@
+  // Variables
+  $list-distance-from-border: 10px;
+  $primary: #585858;
+  $red: #f81d1d;
+
+/*============== 
+  * Quote
+===============*/ 
+  // Variables
+
+  // Elements
+  .bg-black{
+    background-color: $primary;
+    height: auto;
+  }
+  blockquote{
+    color: rgba(255, 255, 255, 0.847);
+    text-transform: capitalize;
+    font-size: 2.5em !important;
+    font-family: 'Special Elite', cursive;
+    
+
+    .quote-highlight{
+      color: $red;
+      text-transform: uppercase;
+    }
+  }
+
+/*============== 
+  * Date Chooser
+===============*/ 
+
+
+  // Elements
+  .custom-card{
+    border-radius: 5px;
+    
+}
+.date-menu-list{
+  position: relative;
+  .calendar-link{
+    color: white;
+  }
+
+  .date-menu-list-item{
+    font-size: 1.3em;  
+
+  }
+}
+
+.tables{
+  table {
+    float:left;
+    margin-right: 10px;
+
+    &:last-child{
+      margin-right: 0;
+    }
+}
+}

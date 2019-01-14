@@ -1,0 +1,48 @@
+/*============== 
+  * Quote
+===============*/
+.bg-black {
+  background-color: #585858;
+  height: auto;
+}
+
+blockquote {
+  color: rgba(255, 255, 255, 0.847);
+  text-transform: capitalize;
+  font-size: 2.5em !important;
+  font-family: 'Special Elite', cursive;
+}
+
+blockquote .quote-highlight {
+  color: #f81d1d;
+  text-transform: uppercase;
+}
+
+/*============== 
+  * Date Chooser
+===============*/
+.custom-card {
+  border-radius: 5px;
+}
+
+.date-menu-list {
+  position: relative;
+}
+
+.date-menu-list .calendar-link {
+  color: white;
+}
+
+.date-menu-list .date-menu-list-item {
+  font-size: 1.3em;
+}
+
+.tables table {
+  float: left;
+  margin-right: 10px;
+}
+
+.tables table:last-child {
+  margin-right: 0;
+}
+/*# sourceMappingURL=main.css.map */
