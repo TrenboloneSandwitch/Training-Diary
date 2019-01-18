@@ -2,15 +2,19 @@
   * Quote
 ===============*/
 .bg-black {
-  background-color: #585858;
+  
   height: auto;
 }
 
 blockquote {
-  color: rgba(255, 255, 255, 0.847);
+  color: white;
   text-transform: capitalize;
   font-size: 2.5em !important;
   font-family: 'Special Elite', cursive;
+}
+
+blockquote .blockquote-footer {
+  color: white;
 }
 
 blockquote .quote-highlight {
@@ -38,7 +42,8 @@ blockquote .quote-highlight {
 }
 
 .tables table {
-  float: left;
+  display: inline-flex;
+  justify-content: space-between;
   margin-right: 10px;
 }
 

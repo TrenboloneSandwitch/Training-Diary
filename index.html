@@ -16,13 +16,13 @@
 
   <!-- Main CSS file -->
   <link rel="stylesheet" href="src/css/scss/main.css">
-  <title>My JavaScript App</title>
+  <title>TréninkovýDeník</title>
 </head>
 
 <body class="bg-black">
   <!--Navbar-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">TrainingDiary</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">TréninkovýDeník</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -54,7 +54,7 @@
 
   <!-- Date Chooser -->
 
-  <div class="container card card-body text-light custom-card bg-dark">
+  <div class="container card card-body text-light custom-card bg-primary">
     <ul class="list-inline justify-content-center d-flex date-menu-list m-0">
       <li class="list-inline-item date-menu-list-item mx-auto"><a class="calendar-link text-yellow" href="#"><i class="fa fa-long-arrow-left"
             aria-hidden="true"></i> <span class="d-none d-sm-inline">Předchozí</span></a></li>
@@ -65,58 +65,82 @@
     </ul>
   </div>
 
-  <div class="container pt-2">
+  <div class="container pt-2" id="container-for-exercises">
     <div class="row card">
       <div class="card-header col-12">
         <div class="row align-items-center">
-          <div class="col-6 text-dark px-5 phase-title">Rozcvička</div>
+          <div class="col-6 text-dark px-5 phase-title">
+            Rozcvička
+          </div>
           <div class="col-6 text-dark px-5 text-right phase-title">
-            <a class="text-success" href="#"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i></a>
+            <a class="text-success" href="#"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" data-toggle="modal"
+                data-target="#addExerciseModal" data-phase="warmUP"></i></a>
           </div>
         </div>
       </div>
-      <div class="card-body col-12">
-        <div class="row text-dark text-center align-items-center">
-          <div class="col-3">
-            Benchpress
-            <br>
-            <a class="edit text-warning mr-2" href="#" data-toggle="tooltip" data-placement="bottom" data-trigger="hover" title="Upravit záznam"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
-            <a class="edit text-danger" href="#" data-toggle="tooltip" data-placement="bottom" title="Smazat záznam" data-trigger="hover"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+      <div class="card-body col-12" id="warmup-exercises-container">
+        <span id="empty-span-warmup-exercises-container">Zatím nebyl přidán žádný cvik.</span>
+      </div>
+
+      <div class="card-header col-12">
+        <div class="row align-items-center">
+          <div class="col-6 text-dark px-5 phase-title">
+            Hlavní část
           </div>
-          <div class="col-9 tables">
-            <table>
-              <tbody>
-                <tr>
-                  <th>1x3</th>
-                </tr>
-                <tr>
-                  <th>100</th>
-                </tr>
-              </tbody>
-            </table>
-            <table>
-              <tbody>
-                <tr>
-                  <th>1x8</th>
-                </tr>
-                <tr>
-                  <th>120</th>
-                </tr>
-              </tbody>
-            </table>
-            <table>
-              <tbody>
-                <tr>
-                  <th>8x3</th>
-                </tr>
-                <tr>
-                  <th>130</th>
-                </tr>
-              </tbody>
-            </table>
+          <div class="col-6 text-dark px-5 text-right phase-title">
+            <a class="text-success" href="#"><i class="fa fa-plus-circle fa-2x" aria-hidden="true" data-toggle="modal" data-target="#addExerciseModal" data-phase="mainPart"></i></a>
           </div>
         </div>
-        <hr>
+      </div>
+      <div class="card-body col-12" id="main-exercises-container"> 
+        <span id="empty-span-main-exercises-container">Zatím nebyl přidán žádný cvik.</span>
+      </div>
+
+
+
+
+       
+      <div class="modal fade" id="addExerciseModal" tabindex="-1" role="dialog" aria-labelledby="modal-titleID"
+        aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-titleID">Přidat cvik</h5>
+              <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close">
+                &times;
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="mx-2 my-auto d-inline w-100" id="modal-form">
+
+
+                <div class="row" id="exercise-row">
+                  <div class="col-12 mb-2">
+                    <label for="exercise-name-input">Cvik</label>
+                    <input class="form-control" type="text" placeholder="" id="exercise-name-input"></div>
+                </div>
+                <div class="row inputs-row">
+                  <div class="col-4"><label for="exercise-series-input-1" exercise-name-input>Počet sérií</label>
+                    <input class="form-control custom-form-input" type="number" placeholder="" id="exercise-series-input-1"></div>
+                  <div class="col-4"> <label for="exercise-reps-input-1" exercise-name-input>Opakování</label>
+                    <input class="form-control" type="number" placeholder="" id="exercise-reps-input-1"></div>
+                  <div class="col-4"> <label for="exercise-weight-input" exercise-name-input>Váha</label>
+                    <input class="form-control" type="number" placeholder="" id="exercise-weight-input-1"></div>
+
+                </div>
+                <span id="next-inputs"></span>
+
+              </form>
+              <a href="#" class="badge badge-success float-right mt-3" id="add-series-btn">Přidej další
+                řádek</a>
+              <a href="#" class="badge badge-danger float-right mt-3 mx-3" id="remove-series-btn" style="display: none">Odstraň poslední řádek</a>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">Zavřít</button>
+              <button type="button" class="btn btn-primary" id="save-exercise-btn">Uložit</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -127,6 +151,7 @@
       crossorigin="anonymous"></script>
     <script src="src/js/bootstrap.min.js"></script>
     <!--Main JS file compiled from all files-->
+    <script src="src/js/UIHandler.js"></script>
     <script src="src/app.js"></script>
 </body>
 
