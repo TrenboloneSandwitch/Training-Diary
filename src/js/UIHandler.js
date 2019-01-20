@@ -13,7 +13,7 @@ class UI {
         const div = document.createElement('div');
         div.classList = 'row mt-1 inputs-row';
         div.dataset.rowID = this.getRowsFromModal().length + 1;
-        // Ineer HTML
+        // Inner HTML
         let html = `
         <div class="col-4">
             <input class="form-control custom-form-input" type="text" placeholder="" id="exercise-series-input-${ID}">
@@ -72,11 +72,13 @@ class UI {
             divsArr[index].value = '';
         };
     }
+
+    
     // Create exercise based on user inputs and add it into UI
     addExerciseIntoUI(exercise, containerID) {
         const mainDiv = document.querySelector(`#${containerID}`);
         //mainDiv.classList = 'card-body col-12'
-        const numberOfRows = exercise.reps.length;
+        const numberOfTables = exercise.reps.length;
         if (document.querySelector(`#empty-span-${containerID}`)) {
             mainDiv.innerHTML = '';
         }
@@ -89,11 +91,13 @@ class UI {
         const col2 = document.createElement('div');
         const hr = document.createElement('hr');
         // append classes to the elements
-        row.classList = 'row text-dark text-center align-items-center';
+        row.classList = `row text-dark text-center align-items-center`;
+        
+        
         col1.classList = 'col-5 col-sm-4 col-md-3';
         col2.classList = 'col-7 col-sm-8 col-md-9 tables';
 
-        col1.innerText = exercise.name;
+        col1.innerHTML = `<span class="exr-name">${exercise.name}</span>`;
         col1.appendChild(document.createElement('br'));
         const aData = [
             ['edit', 'warning', 'Upravit záznam', 'pencil'],
@@ -118,19 +122,17 @@ class UI {
         });
 
         let html = '';
-        for (let index = 0; index < numberOfRows; index++) {
-            html += `
-            <table>
+        for (let index = 0; index < numberOfTables; index++) {
+            html += `<table>
             <tbody>
               <tr>
-                <th>${exercise.series[index]}x${exercise.reps[index]}</th>
+                <th><span class="series">${exercise.series[index]}</span>x<span class="reps">${exercise.reps[index]}</span></th>
               </tr>
               <tr>
-                <th>${exercise.weight[index]}</th>
+                <th><span class="weight">${exercise.weight[index]}</span></th>
               </tr>
             </tbody>
-          </table>
-            `;
+          </table>`;
         }
         col2.innerHTML = html;
 
