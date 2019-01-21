@@ -11,11 +11,10 @@ class UI {
         const ID = this.getRowsFromModal().length + 1;
         // Create div and add classes
         const div = document.createElement('div');
-        div.classList = 'row mt-1 inputs-row';
+        div.classList = 'row mt-2 inputs-row';
         div.dataset.rowID = this.getRowsFromModal().length + 1;
         // Inner HTML
-        let html = `
-        <div class="col-4">
+        let html = `<div class="col-4">
             <input class="form-control custom-form-input" type="text" placeholder="" id="exercise-series-input-${ID}">
         </div>
         <div class="col-4">
@@ -23,15 +22,15 @@ class UI {
         </div>
         <div class="col-4"> 
             <input class="form-control" type="text" placeholder="" id="exercise-weight-input-${ID}">
-        </div>
-        `;
+        </div>`;
         div.innerHTML = html;
         // Insert created div on certain position
-        this.form.insertBefore(div, this.span);
-
+        //this.form.insertBefore(div, this.span);
+        this.form.insertBefore(div, document.querySelector('#modal-form').lastChild.nextSibling);
         this.hideRemoveButton();
         
     }
+
     // Remove last row from modal form
     removeLastRowFromModal() {
         const inputs = this.getRowsFromModal();
@@ -78,13 +77,14 @@ class UI {
     addExerciseIntoUI(exercise, containerID) {
         const mainDiv = document.querySelector(`#${containerID}`);
         //mainDiv.classList = 'card-body col-12'
-        const numberOfTables = exercise.reps.length;
+        
         if (document.querySelector(`#empty-span-${containerID}`)) {
             mainDiv.innerHTML = '';
         }
 
         const subDIV = document.createElement('div');
-
+        // tady
+        const rowid = mainDiv.querySelectorAll('.row').length;
         // create elements
         const row = document.createElement('div');
         const col1 = document.createElement('div');
@@ -92,7 +92,8 @@ class UI {
         const hr = document.createElement('hr');
         // append classes to the elements
         row.classList = `row text-dark text-center align-items-center`;
-        
+        //tady
+        row.id = `row-${containerID}-${rowid}`;
         
         col1.classList = 'col-5 col-sm-4 col-md-3';
         col2.classList = 'col-7 col-sm-8 col-md-9 tables';
@@ -121,8 +122,21 @@ class UI {
             col1.appendChild(link);
         });
 
+        //
+        col2.innerHTML = this.drawTable(exercise);
+
+        // Append cols to rows
+        row.appendChild(col1);
+        row.appendChild(col2);
+        // Append rows to container
+        subDIV.appendChild(row);
+        subDIV.appendChild(hr);
+        mainDiv.appendChild(subDIV);
+    }
+
+    drawTable(exercise){
         let html = '';
-        for (let index = 0; index < numberOfTables; index++) {
+        for (let index = 0; index <exercise.reps.length; index++) {
             html += `<table>
             <tbody>
               <tr>
@@ -134,15 +148,7 @@ class UI {
             </tbody>
           </table>`;
         }
-        col2.innerHTML = html;
-
-        // Append cols to rows
-        row.appendChild(col1);
-        row.appendChild(col2);
-        // Append rows to container
-        subDIV.appendChild(row);
-        subDIV.appendChild(hr);
-        mainDiv.appendChild(subDIV);
+        return html;
     }
 
     hideRemoveButton(){
@@ -151,8 +157,7 @@ class UI {
         if (inputs.length === 1) {
             this.removeRowBtn.style.display = 'none';
         } else if (inputs.length !== 1 && (this.removeRowBtn.style.display === 'none')){
-            this.removeRowBtn.style.display = 'block';console.log('fire');
-
+            this.removeRowBtn.style.display = 'block';
         }
     }
 
@@ -194,6 +199,16 @@ class UI {
             currentAlert.remove();
         }
     }
+
+    changeState(state) {
+        if (state == 'save') {
+          document.getElementById('save-exercise-btn').style.display = 'block';
+          document.getElementById('edit-exercise-btn').style.display = 'none';
+        } else {
+          document.getElementById('save-exercise-btn').style.display = 'none';
+          document.getElementById('edit-exercise-btn').style.display = 'block';
+        }
+      }
 
 
 }

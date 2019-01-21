@@ -50,4 +50,12 @@ blockquote .quote-highlight {
 .tables table:last-child {
   margin-right: 0;
 }
+
+#edit-exercise-btn{
+  display: none;
+}
+
+form{
+  line-height: normal;
+}
 /*# sourceMappingURL=main.css.map */
