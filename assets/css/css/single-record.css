@@ -1,0 +1,129 @@
+/*============== 
+  * Quote
+===============*/
+blockquote {
+  color: #000000;
+  text-transform: capitalize;
+  font-size: 2.5em !important;
+  font-family: 'Special Elite', cursive;
+}
+
+blockquote .blockquote-footer {
+  color: #000000;
+}
+
+blockquote .quote-highlight {
+  color: #f81d1d;
+  text-transform: uppercase;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/*============== 
+  * Date Chooser
+===============*/
+.custom-card {
+  border-radius: 5px;
+}
+
+.date-menu-list {
+  position: relative;
+}
+
+.date-menu-list .calendar-link {
+  color: white;
+}
+
+.date-menu-list .date-menu-list-item {
+  font-size: 1.3em;
+}
+
+.tables table {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-right: 10px;
+}
+
+.tables table:last-child {
+  margin-right: 0;
+}
+
+textarea {
+  resize: none;
+  -webkit-box-shadow: 1 1 1 3px #000;
+          box-shadow: 1 1 1 3px #000;
+}
+
+textarea::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #2196F3;
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+  font-size: 39px;
+  line-height: 1;
+  padding: 0 0 0 0;
+  margin: 0;
+}
+
+.plus-btn {
+  float: right;
+  text-align: center;
+}
+
+.plus-btn .fa-plus-circle {
+  font-size: 42px;
+}
+
+.plus-btn .addName {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .plus-btn .addName {
+    display: block;
+  }
+  .plus-btn .fa-plus-circle {
+    font-size: 30px;
+  }
+}
+
+.title-card {
+  float: left;
+  text-align: left;
+}
+
+.title-card .flaticon-i {
+  text-align: center;
+}
+
+.title-card .flaticon-span {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .title-card {
+    margin-left: -40px;
+  }
+  .title-card .flaticon-i {
+    display: none;
+  }
+}
+
+#edit-exercise-btn {
+  display: none;
+}
+/*# sourceMappingURL=single-record.css.map */

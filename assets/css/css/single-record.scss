@@ -1,0 +1,126 @@
+  // Variables
+  $list-distance-from-border: 10px;
+  $primary: #000000;
+  $red: #f81d1d;
+  /*============== 
+  * Quote
+===============*/
+
+  // Variables
+  // Elements
+  blockquote {
+    color: $primary;
+    text-transform: capitalize;
+    font-size: 2.5em !important;
+    font-family: 'Special Elite', cursive;
+    .blockquote-footer {
+      color: $primary;
+    }
+    .quote-highlight {
+      color: $red;
+      text-transform: uppercase;
+    }
+  }
+  a{
+    &:hover{
+      text-decoration:none;
+    }
+  }
+
+  /*============== 
+  * Date Chooser
+===============*/
+
+  // Elements
+  .custom-card {
+    border-radius: 5px;
+  }
+
+  .date-menu-list {
+    position: relative;
+    .calendar-link {
+      color: white;
+    }
+    .date-menu-list-item {
+      font-size: 1.3em;
+    }
+  }
+
+  .tables {
+    table {
+      display: inline-flex;
+      justify-content: space-between;
+      margin-right: 10px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  textarea {
+    resize: none;
+    
+    box-shadow: 1 1 1 3px #000;
+    
+
+    &::-webkit-scrollbar {
+      width: 12px;
+      background-color: #F5F5F5;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+      background-color: #2196F3;
+    }
+  }
+
+  [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+  [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+    font-size: 39px;
+    line-height:1;
+    padding: 0 0 0 0;
+    margin: 0;
+  }
+
+  .plus-btn{
+    float: right;
+    text-align: center;
+    .fa-plus-circle{
+      font-size: 42px;
+    }
+    .addName{
+      display: none;
+    }
+    @media (min-width: 768px){
+      .addName{
+        display: block;
+      }
+      .fa-plus-circle{
+        font-size: 30px;
+      }
+    }
+  }
+
+  .title-card{
+    float: left;
+    text-align: left;
+    
+    
+    .flaticon-i{
+      text-align: center;
+    }
+    .flaticon-span{
+      text-align: center;
+    }
+    @media (max-width: 768px){
+      margin-left: -40px;
+      .flaticon-i{
+        display: none;
+      }
+    }
+
+    
+  }
+  #edit-exercise-btn{
+    display: none;
+  }

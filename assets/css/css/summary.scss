@@ -1,0 +1,13 @@
+    table {
+      display: inline-flex;
+      justify-content: space-between;
+      margin-right: 10px;
+     
+      &:last-child {
+        margin-right: 0;
+      }
+
+      th{
+        font-weight: 100;
+      }
+    }

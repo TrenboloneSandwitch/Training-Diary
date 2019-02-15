@@ -50,7 +50,7 @@ class UI {
             divsArr[index].remove();
         }
         // Clear values from inputs
-        this.clearInputs();
+        this.clearInputsFromModal();
 
         this.hideRemoveButton();
     }
@@ -61,9 +61,11 @@ class UI {
     }
 
     // Clear values from all inputs
-    clearInputs() {
-        // Select every input in the document
-        const nodelist = document.querySelectorAll('input');
+    clearInputsFromModal() {
+        // Select every input in the modal
+        
+
+        const nodelist = document.querySelector('.modal').querySelectorAll('input');
         // Convert nodearray into array
         const divsArr = Array.prototype.slice.call(nodelist);
         // Loop through and clear all values
@@ -101,7 +103,7 @@ class UI {
         col1.innerHTML = `<span class="exr-name">${exercise.name}</span>`;
         col1.appendChild(document.createElement('br'));
         const aData = [
-            ['edit', 'warning', 'Upravit záznam', 'pencil'],
+            ['edit', 'warning', 'Upravit záznam', 'edit'],
             ['remove', 'danger', 'Smazat záznam', 'trash']
         ];
         aData.forEach(item => {
@@ -116,7 +118,7 @@ class UI {
             link.title = `${item[2]}`;
             // add icon
             link.innerHTML = `
-                    <i class="fa fa-${item[3]} fa-lg" aria-hidden="true">
+                    <i class="fas fa-${item[3]} fa-lg" aria-hidden="true">
                     </i>`;
             // Append to collumn
             col1.appendChild(link);
@@ -140,10 +142,10 @@ class UI {
             html += `<table>
             <tbody>
               <tr>
-                <th><span class="series">${exercise.series[index]}</span>x<span class="reps">${exercise.reps[index]}</span></th>
+                <th><span class="series" title="Série">${exercise.series[index]}</span>x<span class="reps" title="Opakování">${exercise.reps[index]}</span></th>
               </tr>
               <tr>
-                <th><span class="weight">${exercise.weight[index]}</span></th>
+                <th><span class="weight" title="Váha">${exercise.weight[index]}kg</span></th>
               </tr>
             </tbody>
           </table>`;

@@ -2,6 +2,8 @@
  * Class Init
  */
 const ui = new UI();
+const LS = new LocalStorage();
+const storage = new Storage1();
 
 /**
  * Global Vars using module revealling pattern
@@ -54,6 +56,7 @@ $('#addExerciseModal').on('show.bs.modal', function (event) {
 });
 
 
+
 /**
  * EVENT LISTENERS
  */
@@ -62,9 +65,10 @@ $('#addExerciseModal').on('show.bs.modal', function (event) {
 const plusBtns = document.querySelectorAll('.phase-title');
 // For all plus icons add Event Listener onClick
 for (let i = 0; i < plusBtns.length; i++) {
-  plusBtns[i].addEventListener("click", function () {
+  plusBtns[i].addEventListener("click", function (e) {
     // Change modal state on SAVE
     ui.changeState('save');
+    e.preventDefault();
   });
 }
 
@@ -97,6 +101,8 @@ document.querySelector('.modal').addEventListener('click', e => {
   }
   e.preventDefault();
 });
+
+document.querySelector('#saveDayBTN').addEventListener('click', saveDay);
 /*************************************************************/
 
 // Add Inputs into modal
@@ -192,6 +198,48 @@ function removeItem(item) {
 }
 
 
+function getSingleExercise(row, i) {
+  const reps = [];
+  const series = [];
+  const weight = [];
+  const exercise = {};
+  const name = row.querySelector('.exr-name').innerText;
+  tables = row.querySelectorAll('table');
+  tables.forEach((table, y) => {
+    reps[y] = parseInt(table.querySelector('.reps').innerText);
+    series[y] = parseInt(table.querySelector('.series').innerText);
+    weight[y] = parseInt(table.querySelector('.weight').innerText);
+  });
+
+  exercise[i] = {
+    name,
+    reps,
+    series,
+    weight
+  };
+  return exercise[i];
+
+}
+
+function getAllExercisesData(container) {
+  let warmup = [];
+  let partName;
+
+  if (container == 'warmup') {
+    partName = 'warmup-exercises-container';
+  } else {
+    partName = 'main-exercises-container';
+  }
+
+  const wu = document.getElementById(`${partName}`);
+  const rowsNode = wu.querySelectorAll('.row');
+
+  rowsNode.forEach((row, index) => {
+    warmup.push(getSingleExercise(row, index));
+  });
+  return warmup;
+
+}
 
 
 
@@ -204,34 +252,21 @@ function callUpdateItem(row) {
 
   const currentRow = document.getElementById(`${rowID}`);
   mySingleGlobalVar.setRow(currentRow);
+  let tables = currentRow.querySelectorAll('table');
 
-  const exrName = currentRow.querySelector('.exr-name').innerText;
-  const reps = [];
-  const series = [];
-  const weight = [];
-
-  let tables = '';
-  tables = currentRow.querySelectorAll('table');
-  
-  // Napln objekt datama
-  const tablesArr = Array.prototype.slice.call(tables);
-  tablesArr.forEach((table, i) => {
-    series[i] = parseInt(table.querySelector('.series').innerText);
-    reps[i] = parseInt(table.querySelector('.reps').innerText);
-    weight[i] = parseInt(table.querySelector('.weight').innerText);
-  });
+  let object = getSingleExercise(currentRow)
 
   // V modalu udělej požadovaný počet řádků
-  for (let index = 1; index < tablesArr.length; index++) {
+  for (let index = 1; index < tables.length; index++) {
     ui.addRowsIntoModal();
   }
   // Vyplň všechny inputy v modalu
-  document.querySelector(`#exercise-name-input`).value = exrName;
-  tablesArr.forEach((table, i) => {
-    document.querySelector(`#exercise-series-input-${i+1}`).value = series[i];
-    document.querySelector(`#exercise-reps-input-${i+1}`).value = reps[i];
-    document.querySelector(`#exercise-weight-input-${i+1}`).value = weight[i];
-  });
+  document.querySelector(`#exercise-name-input`).value = object.name;
+  for (let i = 0; i < tables.length; i++) {
+    document.querySelector(`#exercise-series-input-${i + 1}`).value = object.series[i];
+    document.querySelector(`#exercise-reps-input-${i + 1}`).value = object.reps[i];
+    document.querySelector(`#exercise-weight-input-${i + 1}`).value = object.weight[i];
+  };
 
   // Ulož změněné hodnoty po požadovaný cvik
   // vymaž řádky
@@ -271,3 +306,30 @@ function editExercise() {
 document.querySelector('#edit-exercise-btn').addEventListener('click', function (e) {
   editExercise();
 });
+
+
+function saveDay(e) {
+  const id = document.getElementById('basic-info-date').value;
+  const name = document.getElementById('basic-info-title').value;
+  const difficulty = document.getElementById('basic-info-difficulty').value;
+  const notes = document.getElementById('basic-info-notes').value;
+
+  const warmup = getAllExercisesData('warmup');
+  const main = getAllExercisesData('main');
+
+  const trenink = {
+    id,
+    name,
+    difficulty,
+    notes,
+    warmup,
+    main
+  };
+
+  console.log(trenink);
+
+  // save to LS
+  // LS.addItem(trenink, id);
+  storage.create(trenink);
+  e.preventDefault();
+}
