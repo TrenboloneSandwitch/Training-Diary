@@ -206,11 +206,11 @@ class UI {
         if (state == 'save') {
           document.getElementById('save-exercise-btn').style.display = 'block';
           document.getElementById('edit-exercise-btn').style.display = 'none';
+          document.getElementById('modal-titleID').innerText = 'Přidat cvik';
         } else {
           document.getElementById('save-exercise-btn').style.display = 'none';
           document.getElementById('edit-exercise-btn').style.display = 'block';
+          document.getElementById('modal-titleID').innerText = 'Editovat cvik';
         }
       }
-
-
 }
